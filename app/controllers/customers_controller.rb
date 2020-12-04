@@ -49,7 +49,7 @@ class CustomersController < ApplicationController
     end
     end
 
-
+  #
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
@@ -60,6 +60,7 @@ class CustomersController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
@@ -68,7 +69,7 @@ class CustomersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def customer_params
-      params.require(:customer).permit(:fam_name, :st_numb, :st_name)
+      params.require(:customer).permit(:fam_name, :st_numb, :st_name, :phone, :email)
     end
     def catch_not_found(e)
       Rails.logger.debug("We had a not found exception.")

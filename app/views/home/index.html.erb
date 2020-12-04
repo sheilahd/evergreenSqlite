@@ -2,53 +2,53 @@
 <!DOCTYPE html>
 
   <head>
-
+    <title>HOA Website</title>
  </head>
-  <body id="home" data-spy="scroll" data-target=".navbar" data-offset="100">
-
+  <body  id="home" data-spy="scroll" data-target=".navbar" data-offset="100">
+<% if current_user %>
+<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+<% else %>
+<%= link_to 'Sign up', new_user_registration_path %>
+<%= link_to 'Sign in', new_user_session_path %>
+<%end%>
+<%=link_to 'News', news_index_path %>
   <!--    jumbotron -->
-          <div class="jumbotron jumbotron-fluid bg-info text-white">
+    <div class="jumbotron jumbotron-fluid bg-info text-white ">
         <div class="container text-sm-center pt-5">
-          <h2 class="display-3">Evergreen HOA Website </h2>
-          <p class="lead">A peaceful Community in Cary, North Carolina</p>
-          <div class="btn-group mt-4" role="group" aria-label="Callout buttons">
-            <%# <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#order">Permit Orders</button> %>
-            <%# <a  class="btn btn-light btn-lg" href="#speakers">Neighborhood Info</a> %>
-              <%# <%= button_to 'Get Shark Info', orders_path, :method => :get,  :class => "btn btn-primary btn-lg"%>
-              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#contact">Contact Us</button>
-            </div>
-            </div>
-            </div>
+          <h3 class="display-4 ">Evergreen HOA  </h3>
+          <h3 class="display-5">Cary, North Carolina </h3>
+            <h4 class="display-2">Welcome! </h4>
+            <a  class="btn btn-light" btn-lg text-white" <%= link_to 'Register as a New Neighbor', new_customer_path, class: 'nav-link'%></a>
+        </div>
+    </div>
+
   <!--  /  jumbotron -->
+
+
   <div class="container pt-4">
       <!-- about-->
-
-
       <div id="about"class="row">
         <div class="col-lg order-lg-2">
-            <h3 class="mb-4">About Evergreen Community</h3>
+            <h3 class="mb-4 text-muted">About Evergreen Community</h3>
             <img class="mb-4 rounded img-fluid d-none d-sm-block" <%= image_tag("Test House.jpeg", border: 0) %>
-            <p>Our beautiful Community is located in the heart of Cary</p>
-            <p>This is a portal to keep our neighbors connected and informed!</p>
+            <p>Evergreen HOA represents the interests of property owners in the Evergreen neighborhood. The HOA is a voluntary participation organization that supports  neighborhood initiatives with policies and best practices, functional committees and social activities with the stated objectives of enhancing security, growing community, and increasing property values.</p>
         </div>
-
-        <div class="col-lg order-lg-1">
-            <h3 class="mb-4">Evergreen HOA Regulations</h3>
-            <p>Pay your homeowners association fees. Living in a homeowners association community means that you are required to pay monthly fees to be a part of it.</p>
-            <p>Keep noise levels down..</p>
+     <div class="col-lg order-lg-1">
+          <h3 class="mb-4 text-muted" >Evergreen HOA Regulations</h3>
             <p>Be considerate of common areas.</p>
             <p>Pay attention to pets</p>
-            <%= link_to 'New Documents Order', new_order_path, class: 'nav-link'  %>
-        </div>
+            <p>Keep noise levels down..</p>
+            <p>Pay your homeowners association fees. Living in a homeowners association community means that you are required to pay monthly fees to be a part of it.</p>
+            <a  class="btn btn-info btn-lg text-white" <%= link_to ' Calculate your Annual Fee!', new_payment_path, class: 'nav-link'%></a>
+     </div>
 
         <div class="col-lg order-lg-3">
-          <h3 class="mb-4">Neighbohood Info</h3>
+          <h3 class="mb-4 text-muted">Neighbohood Info</h3>
             <div class="list-group">
               <a href="https://www.townofcary.org/" class="list-group-item list-group-item-action"><strong>Cary Town</strong>: Local and updated information </a>
               <a href="https://www.greatschools.org/north-carolina/cary/7674-Laurel-Park-Elementary/" class="list-group-item list-group-item-action"><strong>Elementary School</strong>: Laurel Park Elementary</a>
               <a href="https://www.greatschools.org/north-carolina/apex/3367-Salem-Middle/" class="list-group-item list-group-item-action"><strong>Middle School</strong>: Salem Middle</a>
               <a href="https://www.greatschools.org/north-carolina/cary/1907-Cary-High/" class="list-group-item list-group-item-action"><strong>High School</strong>: Cary High</a>
-
             </div>
       </div>
 
@@ -57,104 +57,68 @@
 
     <!--      blog-->
 
+<br>
 
+<a  class="btn btn-outline-info btn-lg btn-block  text-black text-center" <%= link_to ' Share News and Events with your Neighbors!', new_post_path, class: 'nav-link'%></a>
 
-  <h1 id="blog" class="display-4 text-center my-5 text-muted">Neighborhood News </h1>
+  <h1 id="blog" class="display-5 text-center my-5 text-muted">Evergreen News and Events </h1>
+
+<!-- <a class="list-group-item list-group-item-action active" data-toggle="list" href="#posts" role="tab">Home</a> -->
 
  <ul class="list-group">
-
-
-
-    <%#= link_to posts_path do %>
-    <%#=post.title%> <%#=post.body%>
-    <%#end%>
-
-   <!-- <a class="list-group-item list-group-item-action active" data-toggle="list" href="#posts" role="tab">Home</a> -->
-
-  <li class="list-group-item list-group-item-success">
+  <li class="list-group-item list-group-item-secondary">
     <div class="d-flex justify-content-between">
-      <h5 class="mb-1">Lost Dog</h5>
-      <span class="badge badge-pill badge-info p-2">Comments</span>
+    <h5 class="mb-1">Lost Dog</h5>
     </div>
     <p class="mb-1"> Name: "Lazy", House: 109 London Plain ct, last seen Friday afternoon</p>
   </li>
 
-  <li class="list-group-item list-group-item-success">
-      <div class="d-flex justify-content-between">
-        <h5 class="mb-1">Covid 19 Update</h5><a href="#"></a>
-        <span class="badge badge-pill badge-info p-2">Comments</span>
-      </div>
-      <p class="mb-1">Please let us know if anyone in need of groceries delivery</p>
-    </li>
+   <li class="list-group-item list-group-item-warning">
+   <div class="d-flex justify-content-between">
+   <h5 class="mb-1">Showing Support for our Covid-19 heroes</h5>
+   </div>
+   <p class="mb-1">  Decorate your front door with a white tie!</p>
+ </li>
+ <li class="list-group-item list-group-item-secondary">
+   <div class="d-flex justify-content-between">
+   <h5 class="mb-1">Landscaping works</h5>
+   </div>
+   <p class="mb-1"> Next Tuesday June 9th, 2020 afternoon</p>
+ </li>
 
-<li class="list-group-item list-group-item-success">
-    <div class="d-flex justify-content-between">
-      <h5 class="mb-1">Teddy Bears show for kids </h5>
-      <span class="badge badge-pill badge-info p-2">Comments</span>
-    </div>
-    <p class="mb-1"> Let's make our little ones walk more pleasant and fun, post in the comments your address if you can show your Teddy Bear on the window</p>
+ <li class="list-group-item list-group-item-warning">
+ <div class="d-flex justify-content-between">
+ <h5 class="mb-1">Teddy Bear on  Windows</h5>
+ </div>
+ <p class="mb-1"> Let's make our walk more fun and pleasant!</p>
 </li>
-<%= link_to 'Want to share Info with your neighbors?', new_post_path, class: 'nav-link'  %>
 
 </ul>
 
 <!-- /blog -->
 
+</div>  <!-- /.container-->
 
-<!--callout button-->
-       <button type="button" class="btn btn-outline-info btn-lg d-block mx-auto my-5" data-toggle="modal" data-target="#contact">Contact Us</button>
-<!--/callout button-->
-
-
+<div class="container pt-5">
 
 <!--     footer-->
+
 <div class="row py-3">
   <div class="col-md-7">
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link " href="#">Contact Us</a>
-      </li>
-      <h5 class="mb-1">HOA P.O Box #123456</h5>
+
+      <h3 class="mb-1">Contact us: </h3>
+      <h5 class="mb-1">Email: board@evergreen.org</h5>
+      <h5 class="mb-1">Mailing address:</h5>
+      <h6 class="mb-1">Evergreen Homeowners Association</h6>
+      <h6 class="mb-1">17xx Cary Parkway Drive, Ste 1xx </h6>
+      <h6 class="mb-1">17xx Cary,  North Carolina  </h5> </h6>
+
   </div>
+  </div>  <!-- /.container-->
 <div class="col-md text-md-right">
   <small>&copy; 2020 Evergreen HOA Website by Code the Dream</small>
-
-</ul>
 </div>
   <!--     /footer-->
-    </div>  <!-- /.container-->
-
-
-  <!  =============================
-         Form Modal
-         =============================>
-
-             <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="Contact Us" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header bg-info text-white">
-               <h5 class="modal-title" id="exampleModalLabel">Contact Us</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-body">
-
-  <!--     Registration Form-->
-
-  <form>
-      <div class="form-group">
-      <label for="Family Name">Family Name:</label>
-      <input type="text" class="form-control" id="Family Name:" placeholder="Example input placeholder">
-      </div>
-      <div class="form-group">
-      <label for="formGroupExampleInput2">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Another input placeholder">
-      </div>
-</form>
-<!--     /Registration Form-->
-
-
 
 </body>
 </html>
